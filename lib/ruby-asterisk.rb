@@ -23,6 +23,7 @@ module RubyAsterisk
         @session = Net::Telnet::new('Host' => self.host, 'Port' => self.port, 'Timeout' => 10)
         self.connected = true
       rescue Exception => ex
+        Rollbar.error(ex)
         false
       end
     end
